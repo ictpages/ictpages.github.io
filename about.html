@@ -224,19 +224,8 @@ details.service-card summary:hover {
 }
 
 /* ============================================================
-   LAPTOP / DESKTOP – Brand-Block (Logo + ICT) so groß wie
-   auf der vorherigen Hauptseite
+   MOBILE – 1:1 wie gehabt (max-width: 760px)
    ============================================================ */
-@media (min-width: 761px) {
-  .brand-block .logo {
-    width: 240px;
-  }
-  .brand-block .ict-label {
-    font-size: 4.2rem;
-  }
-}
-
-/* ---------- RESPONSIVE (Mobile unverändert) ---------- */
 @media (max-width: 760px) {
   h1,
   h2,
@@ -306,6 +295,83 @@ details.service-card summary:hover {
   }
   .service-card li span {
     font-size: 1.3rem;
+    line-height: 1.65;
+  }
+}
+
+/* ============================================================
+   LAPTOP / DESKTOP – exakt dieselben Werte wie Mobile,
+   nur mit Faktor ~1.5 hochskaliert
+   ============================================================ */
+@media (min-width: 761px) {
+  h1,
+  h2,
+  .ict-label {
+    font-size: 4.2rem;
+  }
+  p {
+    font-size: 1.65rem;
+  }
+  .logo,
+  .brand-block .logo {
+    width: 255px;
+  }
+  .section-title {
+    font-size: 2.55rem;
+  }
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.35em;
+  }
+  details.service-card summary {
+    font-size: 1.65rem;
+    padding: 1.125em 0;
+  }
+  .service-card li strong {
+    font-size: 1.47rem;
+  }
+  .service-card li span {
+    font-size: 1.32rem;
+  }
+
+  h2 a {
+    font-size: 4.2rem;
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  .section-title {
+    font-size: 4.5rem;
+    margin: 1.5em 0 0.75em;
+  }
+
+  details.service-card {
+    padding: 0.6em 1.8em;
+    border-radius: 21px;
+  }
+  details.service-card summary {
+    font-size: 2.1rem;
+    padding: 1.35em 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    gap: 0.6em;
+  }
+  details.service-card summary::after {
+    font-size: 2.85rem;
+  }
+  .service-card li {
+    margin-bottom: 2.4em;
+  }
+  .service-card li strong {
+    font-size: 2.25rem;
+    line-height: 1.4;
+    margin-bottom: 0.45em;
+  }
+  .service-card li span {
+    font-size: 1.95rem;
     line-height: 1.65;
   }
 }
