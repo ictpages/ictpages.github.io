@@ -150,7 +150,7 @@ a {
 }
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;   /* 2 Spalten auf Laptop */
+  grid-template-columns: 1fr 1fr;
   gap: 1.2em 2em;
   max-width: 980px;
   width: 100%;
@@ -223,7 +223,20 @@ details.service-card summary:hover {
   line-height: 1.45;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ============================================================
+   LAPTOP / DESKTOP – Brand-Block (Logo + ICT) so groß wie
+   auf der vorherigen Hauptseite
+   ============================================================ */
+@media (min-width: 761px) {
+  .brand-block .logo {
+    width: 240px;
+  }
+  .brand-block .ict-label {
+    font-size: 4.2rem;
+  }
+}
+
+/* ---------- RESPONSIVE (Mobile unverändert) ---------- */
 @media (max-width: 760px) {
   h1,
   h2,
@@ -244,7 +257,7 @@ details.service-card summary:hover {
     font-size: 1rem;
   }
   .services-grid {
-    grid-template-columns: 1fr;   /* Mobile: untereinander */
+    grid-template-columns: 1fr;
     gap: 0.9em;
   }
   details.service-card summary {
@@ -258,20 +271,17 @@ details.service-card summary:hover {
     font-size: 0.88rem;
   }
 
-  /* ---- CALL / MAIL auf Normalgröße (mobil) ---- */
   h2 a {
     font-size: 2.8rem;
     display: inline-block;
     line-height: 1.2;
   }
 
-  /* ---- About-Überschrift größer (mobil) ---- */
   .section-title {
     font-size: 3rem;
     margin: 1em 0 0.5em;
   }
 
-  /* ---- Klapptexte größer (mobil) ---- */
   details.service-card {
     padding: 0.4em 1.2em;
     border-radius: 14px;
@@ -320,8 +330,8 @@ details.service-card summary:hover {
       <img
         class="logo"
         src="/AppDev.svg"
-        width="200"
-        height="200"
+        width="240"
+        height="240"
         alt="ict.pages.dev"
         fetchpriority="high"
       >
