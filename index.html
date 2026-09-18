@@ -52,35 +52,36 @@ header,main,footer{position:relative;z-index:1}
   justify-content:center;
   align-items:center;
   text-align:center;
+  gap:clamp(6px, 1.2vh, 16px);
 }
 
-h1{font-size:2.6rem;margin:.5em 0}       /* Titel: etwas kleiner */
+h1{font-size:4.2rem;margin:.3em 0}       /* Titel: größer */
 h2{font-size:2.1rem}
-h3{font-size:2.6rem;margin:.4em 0}       /* CALL | MAIL: etwas kleiner */
-p{font-size:1.1rem}
+h3{font-size:4.2rem;margin:.3em 0}       /* CALL | MAIL: größer */
+p{font-size:1.4rem;margin:0}
 a{font-weight:bold;text-decoration:none;color:#4466ff}
 a:visited{color:#5577ff}
 img{max-width:100%;height:auto}
 
 /* Logo */
-.logo{width:180px;height:auto;display:block;margin:0 auto}
+.logo{width:240px;height:auto;display:block;margin:0 auto}
 
 /* ICT unter dem Logo: weiß, gleiche Größe wie Titel */
 .ict-label{
-  font-size:2.6rem;      /* = h1 */
+  font-size:4.2rem;      /* = h1 */
   font-weight:bold;
   color:#fff;
-  margin:.2em 0 0;
+  margin:0;
   line-height:1.1;
 }
 
 /* Mobile-Anpassungen */
 @media (max-width:600px){
-  h1{font-size:2rem}
-  .ict-label{font-size:2rem}   /* bleibt gleich wie h1 */
-  h3{font-size:1.8rem}
-  p{font-size:1rem}
-  .logo{width:130px}
+  h1{font-size:2.8rem}
+  .ict-label{font-size:2.8rem}
+  h3{font-size:2.4rem}
+  p{font-size:1.1rem}
+  .logo{width:170px}
 }
 </style>
 </head>
