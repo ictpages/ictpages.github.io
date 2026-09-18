@@ -1,47 +1,36 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <title>ict.pages.dev | ICT</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#000000">
 <meta name="description" content="ICT — Information & Communications Technology">
 <meta name="robots" content="index, follow">
 <meta name="author" content="ict.pages.dev">
-
 <link rel="canonical" href="https://ict.pages.dev/">
 <link rel="icon" href="/favicon.ico">
-
 <!-- Open Graph -->
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="ict.pages.dev | ICT">
 <meta property="og:description" content="Information & Communications Technology">
 <meta property="og:url" content="https://ict.pages.dev/">
 <meta property="og:image" content="https://ict.pages.dev/ictpagesdev.png">
-
 <!-- Twitter -->
-
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ict.pages.dev | ICT">
 <meta name="twitter:description" content="Information & Communications Technology">
 <meta name="twitter:image" content="https://ict.pages.dev/ictpagesdev.png">
-
 <style>
 * {
   box-sizing: border-box;
 }
-
 html,
 body {
   width: 100%;
   height: 100%;
   margin: 0;
 }
-
 body {
   background: #000;
   color: #fff;
@@ -49,7 +38,6 @@ body {
   line-height: 1.2;
   overflow: hidden;
 }
-
 #starfield {
   position: fixed;
   inset: 0;
@@ -59,7 +47,6 @@ body {
   z-index: -1;
   pointer-events: none;
 }
-
 .content-wrap {
   width: 100%;
   height: 100vh;
@@ -72,103 +59,82 @@ body {
   gap: clamp(6px, 1.2vh, 16px);
   text-align: center;
 }
-
 header,
 main,
 footer {
   position: relative;
   z-index: 1;
 }
-
 h1,
 h2,
 p {
   margin: 0;
 }
-
 h1,
 h2,
 .ict-label {
   font-size: 4.2rem;
   font-weight: 700;
 }
-
 h1 {
   line-height: 1.1;
 }
-
 h2 {
   line-height: 1.1;
 }
-
 p {
   font-size: 1.4rem;
 }
-
 a {
   color: #6688ff;
   font-weight: 700;
   text-decoration: none;
 }
-
 a:hover,
 a:focus-visible {
   text-decoration: underline;
 }
-
 a:visited {
   color: #7799ff;
 }
-
 .logo {
   display: block;
   width: 240px;
   height: auto;
   margin: 0 auto;
 }
-
 .ict-label {
   color: #fff;
   line-height: 1.1;
 }
-
 @media (max-width: 600px) {
   h1,
   h2,
   .ict-label {
     font-size: 2.8rem;
   }
-
   p {
     font-size: 1.1rem;
   }
-
   .logo {
     width: 170px;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   #starfield {
     display: none;
   }
 }
 </style>
-
 </head>
-
 <body>
-
 <canvas id="starfield" aria-hidden="true"></canvas>
-
 <div class="content-wrap">
-
   <header>
     <h1>
       <a href="/" aria-label="ict.pages.dev home">ict.pages.dev</a>
     </h1>
   </header>
-
   <main>
     <img
       class="logo"
@@ -178,48 +144,36 @@ a:visited {
       alt="ict.pages.dev"
       fetchpriority="high"
     >
-
 <div class="ict-label">ICT</div>
-
 <h2>
   <a href="tel:+31684725830" aria-label="Call ict.pages.dev">CALL</a>
   <span aria-hidden="true"> | </span>
   <a href="mailto:appdevsinfo@gmail.com" aria-label="Email ict.pages.dev">MAIL</a>
 </h2>
-
   </main>
-
   <footer>
     <p>© 2026 ict.pages.dev</p>
   </footer>
-
 </div>
-
 <script>
 (() => {
   'use strict';
-
   const canvas = document.getElementById('starfield');
   const ctx = canvas.getContext('2d', {
     alpha: false,
     desynchronized: true
   });
-
   if (!ctx) return;
-
   let width = 0;
   let height = 0;
   let centerX = 0;
   let centerY = 0;
   let stars = [];
   let animationFrame = 0;
-
   const reducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
   ).matches;
-
   const MAX_DEPTH = 1;
-
   function createStar(randomDepth = true) {
     return {
       angle: Math.random() * Math.PI * 2,
@@ -228,113 +182,83 @@ a:visited {
       brightness: 0.4 + Math.random() * 0.6
     };
   }
-
   function initializeStars() {
     const density = Math.floor((width * height) / 5000);
     const count = Math.min(Math.max(density, 150), 800);
-
     stars = Array.from(
       { length: count },
       () => createStar(true)
     );
   }
-
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
     width = window.innerWidth;
     height = window.innerHeight;
-
     centerX = width / 2;
     centerY = height / 2;
-
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
-
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
     initializeStars();
-
     if (reducedMotion) {
       drawStatic();
     }
   }
-
   function drawStatic() {
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, width, height);
-
     for (const star of stars) {
       const eased = star.z * star.z;
       const distance = eased * Math.max(width, height) * 0.75;
-
       const x = centerX + Math.cos(star.angle) * distance;
       const y = centerY + Math.sin(star.angle) * distance;
       const size = 0.4 + eased * 2.2;
-
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,255,255,${star.brightness})`;
       ctx.fill();
     }
   }
-
   function animate() {
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, width, height);
-
     const maxDistance = Math.max(width, height) * 0.75;
-
     for (let i = 0; i < stars.length; i++) {
       const star = stars[i];
-
       star.z += star.speed;
-
       if (star.z >= MAX_DEPTH) {
         stars[i] = createStar(false);
         continue;
       }
-
       const eased = star.z * star.z;
       const distance = eased * maxDistance;
-
       const x = centerX + Math.cos(star.angle) * distance;
       const y = centerY + Math.sin(star.angle) * distance;
-
       const size = 0.4 + eased * 2.2;
       const alpha = star.brightness * Math.min(1, eased * 1.5);
-
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(255,255,255,${alpha})`;
       ctx.fill();
     }
-
     animationFrame = requestAnimationFrame(animate);
   }
-
   let resizeTimer;
-
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-
     resizeTimer = setTimeout(() => {
       cancelAnimationFrame(animationFrame);
       resize();
-
       if (!reducedMotion) {
         animate();
       }
     }, 100);
   }, { passive: true });
-
   resize();
-
   if (!reducedMotion) {
     animate();
   }
 })();
 </script>
-
 </body>
 </html>
