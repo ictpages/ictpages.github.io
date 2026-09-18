@@ -64,11 +64,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: clamp(4px, 1.2vh, 16px);
+      gap: clamp(4px, 1vh, 14px);
       text-align: center;
       position: relative;
       z-index: 1;
-      /* No overflow – content is scaled to fit */
       overflow: hidden;
     }
 
@@ -79,31 +78,29 @@
       max-width: 100%;
     }
 
-    /* ---------- TYPOGRAPHY – fully scalable, no scroll ---------- */
+    /* ---------- TYPOGRAPHY – smaller, better proportion to logo ---------- */
     h1, h2, .ict-label {
-      /* fluid font size: never larger than 4.2rem, scales with viewport */
-      font-size: clamp(2rem, 9vw, 4.2rem);
       font-weight: 700;
       line-height: 1.1;
-      white-space: nowrap;       /* keep on one line */
+      white-space: nowrap;
     }
 
+    /* Base (mobile) – keep readable but modest */
     h1 {
-      font-size: clamp(2rem, 9vw, 4.2rem);
-    }
-
-    h2 {
-      font-size: clamp(1.6rem, 7.5vw, 4.2rem);
+      font-size: clamp(1.6rem, 6.5vw, 3rem);
     }
 
     .ict-label {
-      font-size: clamp(2rem, 9vw, 4.2rem);
+      font-size: clamp(1.6rem, 6.5vw, 3rem);
       color: #fff;
-      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 5vw, 2.4rem);
     }
 
     p {
-      font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+      font-size: clamp(0.75rem, 2.2vw, 1.1rem);
       line-height: 1.2;
     }
 
@@ -117,56 +114,68 @@
       text-decoration: underline;
     }
 
-    /* ---------- LOGO – fluid width based on height to avoid scroll ---------- */
+    /* ---------- LOGO – fluid, scales with viewport ---------- */
     .logo {
       display: block;
       width: auto;
-      height: clamp(60px, 18vh, 200px);   /* scales with viewport height */
+      height: clamp(70px, 20vh, 200px);
       max-width: 80vw;
       object-fit: contain;
       margin: 0 auto;
     }
 
-    /* ---------- FLEXIBLE SPACING (no scroll, everything fits) ---------- */
+    /* ---------- FLEXIBLE SPACING ---------- */
     main {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: clamp(4px, 1.5vh, 16px);
+      gap: clamp(4px, 1.2vh, 14px);
       width: 100%;
-    }
-
-    /* preserve line breaks and spacing as original */
-    .ict-label {
-      display: inline-block;
     }
 
     br {
       display: none;            /* remove <br> – flex gap handles spacing */
     }
 
-    /* ---------- TARGET DESKTOP / LAPTOP – ensure vertical fit ---------- */
-    @media (min-height: 600px) and (min-width: 1024px) {
-      /* On large screens, keep content compact & centered */
+    /* ---------- LAPTOP / DESKTOP: keep type in proportion to logo ---------- */
+    @media (min-width: 1024px) and (min-height: 600px) {
       .content-wrap {
-        gap: clamp(8px, 1.8vh, 24px);
+        gap: clamp(6px, 1.4vh, 18px);
       }
+
+      /* Logo grows a bit on large screens, but type stays controlled */
       .logo {
-        height: clamp(100px, 22vh, 220px);
+        height: clamp(110px, 24vh, 220px);
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      }
+
+      .ict-label {
+        font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      }
+
+      h2 {
+        font-size: clamp(1.2rem, 2.4vw, 2rem);
+      }
+
+      p {
+        font-size: clamp(0.8rem, 1.2vw, 1.1rem);
       }
     }
 
-    /* Very short screens (e.g. landscape phones) – compress gracefully */
+    /* Very short screens (e.g. landscape phones) – compress */
     @media (max-height: 500px) {
       .logo {
         height: clamp(40px, 12vh, 80px);
       }
       h1, h2, .ict-label {
-        font-size: clamp(1.2rem, 5vw, 2.4rem);
+        font-size: clamp(1rem, 4vw, 1.8rem);
       }
       p {
-        font-size: clamp(0.7rem, 2vh, 1rem);
+        font-size: clamp(0.6rem, 1.8vh, 0.9rem);
       }
       .content-wrap {
         gap: 4px;
