@@ -31,6 +31,10 @@ body {
   height: 100%;
   margin: 0;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   background: #000;
   color: #fff;
@@ -228,34 +232,54 @@ details.service-card summary:hover {
   h1,
   h2,
   .ict-label {
-    font-size: 2.8rem;
+    font-size: 3.4rem;
   }
   p {
-    font-size: 1.1rem;
+    font-size: 1.35rem;
+    line-height: 1.5;
   }
   .logo,
   .brand-block .logo {
-    width: 170px;
+    width: 190px;
   }
   .section-title {
-    font-size: 1.7rem;
+    font-size: 2.2rem;
   }
   .section-subtitle {
-    font-size: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
   }
   .services-grid {
-    grid-template-columns: 1fr;   /* Mobile: untereinander */
-    gap: 0.9em;
+    grid-template-columns: 1fr;
+    gap: 1em;
   }
   details.service-card summary {
-    font-size: 1.1rem;
-    padding: 0.75em 0;
+    font-size: 1.35rem;
+    padding: 1em 0;
+    line-height: 1.35;
+  }
+  details.service-card summary::after {
+    font-size: 1.8rem;
   }
   .service-card li strong {
-    font-size: 0.98rem;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin-bottom: 0.25em;
   }
   .service-card li span {
-    font-size: 0.88rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  .service-card li {
+    margin-bottom: 1.3em;
+  }
+  .service-card ul {
+    padding: 0 0 1em 0;
+  }
+  h2 a {
+    font-size: 2rem;
+    padding: 0.3em 0.5em;
+    display: inline-block;
   }
 }
 
