@@ -20,14 +20,13 @@
 <meta name="twitter:title" content="ict.pages.dev">
 <meta name="twitter:description" content="ict.pages.dev | ICT | Information & Communications Technology">
 <style>
-html,body{height:100%}
+html,body{height:100%;margin:0}
 body{
   line-height:1;
   background-color:#000;
   color:#fff;
   font-family:"Raleway",Arial,sans-serif;
-  margin:0;
-  overflow-x:hidden;
+  overflow:hidden;           /* kein Scrollen */
 }
 /* Canvas als fixierter Hintergrund */
 #starfield{
@@ -35,26 +34,53 @@ body{
   inset:0;
   width:100%;
   height:100%;
-  z-index:-1;         /* hinter allem */
-  pointer-events:none; /* Klicks gehen durch */
+  z-index:-1;
+  pointer-events:none;
   display:block;
 }
 /* Content über dem Hintergrund */
 header,main,footer{position:relative;z-index:1}
-.content-wrap{padding:0 20px}
-h1{font-size:3.4rem;margin:.6em 0}
+
+/* Alles in Bildschirmhöhe, zentriert, kein Scrollen */
+.content-wrap{
+  height:100vh;
+  height:100dvh;
+  padding:0 20px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+h1{font-size:2.6rem;margin:.5em 0}       /* Titel: etwas kleiner */
 h2{font-size:2.1rem}
-h3{font-size:3.5rem;margin:.4em 0}
-p{font-size:1.4rem}
+h3{font-size:2.6rem;margin:.4em 0}       /* CALL | MAIL: etwas kleiner */
+p{font-size:1.1rem}
 a{font-weight:bold;text-decoration:none;color:#4466ff}
 a:visited{color:#5577ff}
 img{max-width:100%;height:auto}
 
-/* Mobile-Anpassungen für perfekte Responsivität */
+/* Logo */
+.logo{width:180px;height:auto;display:block;margin:0 auto}
+
+/* ICT unter dem Logo: weiß, gleiche Größe wie Titel */
+.ict-label{
+  font-size:2.6rem;      /* = h1 */
+  font-weight:bold;
+  color:#fff;
+  margin:.2em 0 0;
+  line-height:1.1;
+}
+
+/* Mobile-Anpassungen */
 @media (max-width:600px){
-  h1{font-size:2.2rem}
-  h3{font-size:2rem}
-  p{font-size:1.1rem}
+  h1{font-size:2rem}
+  .ict-label{font-size:2rem}   /* bleibt gleich wie h1 */
+  h3{font-size:1.8rem}
+  p{font-size:1rem}
+  .logo{width:130px}
 }
 </style>
 </head>
@@ -67,12 +93,15 @@ img{max-width:100%;height:auto}
 <h1><a href="/">ict.pages.dev</a></h1>
 </center>
 </header>
+
 <main>
 <center>
-<img src="/AppDev.svg" width="200" alt="ict.pages.dev logo">
+<img class="logo" src="/AppDev.svg" alt="ict.pages.dev logo">
+<div class="ict-label">ICT</div>
 <h3><a href="tel:+31684725830">CALL</a> | <a href="mailto:appdevsinfo@gmail.com">MAIL</a></h3>
 </center>
 </main>
+
 <footer>
 <center>
 <p>© 2026 ict.pages.dev</p>
@@ -87,7 +116,7 @@ img{max-width:100%;height:auto}
 
   let W = 0, H = 0, CX = 0, CY = 0;
   let stars = [];
-  const MAX_DEPTH = 1; // 0 = Zentrum, 1 = Rand
+  const MAX_DEPTH = 1;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function resize() {
@@ -105,7 +134,6 @@ img{max-width:100%;height:auto}
   }
 
   function initStars() {
-    // Sternendichte an Bildschirmgröße anpassen (responsiv)
     const density = Math.floor((W * H) / 4000);
     const count = Math.min(Math.max(density, 200), 1200);
     stars = Array.from({ length: count }, () => newStar(true));
@@ -115,14 +143,12 @@ img{max-width:100%;height:auto}
     return {
       angle: Math.random() * Math.PI * 2,
       z: randomDepth ? Math.random() : 0,
-      // Geschwindigkeit: bewusst langsam
       speed: 0.0008 + Math.random() * 0.0018,
       brightness: 0.4 + Math.random() * 0.6
     };
   }
 
   function animate() {
-    // Sanfter Trail-Effekt statt komplettem Clear
     ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
     ctx.fillRect(0, 0, W, H);
 
@@ -135,7 +161,6 @@ img{max-width:100%;height:auto}
         continue;
       }
 
-      // Quadratisches Easing → sanfte Beschleunigung nach außen
       const eased = s.z * s.z;
       const dist = eased * Math.max(W, H) * 0.75;
 
@@ -154,12 +179,10 @@ img{max-width:100%;height:auto}
     requestAnimationFrame(animate);
   }
 
-  // Reagiert auch auf Orientierungswechsel (Mobile)
   window.addEventListener('resize', resize);
   window.addEventListener('orientationchange', resize);
 
   resize();
-  // Bei "reduzierter Bewegung" nur ein statisches Bild zeichnen
   if (prefersReduced) {
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
