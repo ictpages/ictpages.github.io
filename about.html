@@ -123,7 +123,7 @@ a {
   align-items: center;
   gap: 0;
   line-height: 1;
-  margin: 0 auto;
+  margin: 0 auto 0.1em;   /* minimaler Abstand nach unten */
 }
 .brand-block .logo {
   display: block;
@@ -139,7 +139,7 @@ a {
 .section-title {
   font-size: 2.2rem;
   font-weight: 700;
-  margin: 0.8em 0 0.2em;
+  margin: 0.15em 0 0.2em;   /* vorher: 0.8em oben → jetzt 0.15em */
   color: #fff;
 }
 .section-subtitle {
@@ -268,7 +268,7 @@ details.service-card summary:hover {
 
   .section-title {
     font-size: 3rem;
-    margin: 1em 0 0.5em;
+    margin: 0.15em 0 0.5em;   /* vorher: 1em oben → jetzt 0.15em */
   }
 
   details.service-card {
@@ -301,7 +301,6 @@ details.service-card summary:hover {
 
 /* ============================================================
    LAPTOP / DESKTOP – Mobile-Werte × ~1.0 (quasi identisch)
-   Nur die Grid-Spalten ändern sich (2 statt 1)
    ============================================================ */
 @media (min-width: 761px) {
   h1,
@@ -345,7 +344,7 @@ details.service-card summary:hover {
 
   .section-title {
     font-size: 3.1rem;
-    margin: 1.03em 0 0.52em;
+    margin: 0.15em 0 0.52em;   /* vorher: 1.03em oben → jetzt 0.15em */
   }
 
   details.service-card {
