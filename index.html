@@ -9,7 +9,6 @@
 <meta name="keywords" content="ict.pages.dev, ICT, Information & Communications Technology">
 <meta name="robots" content="index, follow">
 <meta name="author" content="ict.pages.dev">
-<meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://ict.pages.dev">
 <link rel="icon" href="/favicon.ico">
 <meta property="og:type" content="website">
@@ -21,22 +20,53 @@
 <meta name="twitter:title" content="ict.pages.dev">
 <meta name="twitter:description" content="ict.pages.dev | ICT | Information & Communications Technology">
 <style>
-body{ line-height: 1;background-color:#000;color:#fff;font-family:"Raleway",Arial,sans-serif;margin-left: 20px;}
-h1{font-size:3.4rem}
+html,body{height:100%}
+body{
+  line-height:1;
+  background-color:#000;
+  color:#fff;
+  font-family:"Raleway",Arial,sans-serif;
+  margin:0;
+  overflow-x:hidden;
+}
+/* Canvas als fixierter Hintergrund */
+#starfield{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-1;         /* hinter allem */
+  pointer-events:none; /* Klicks gehen durch */
+  display:block;
+}
+/* Content über dem Hintergrund */
+header,main,footer{position:relative;z-index:1}
+.content-wrap{padding:0 20px}
+h1{font-size:3.4rem;margin:.6em 0}
 h2{font-size:2.1rem}
-h3{font-size:3.5rem}
+h3{font-size:3.5rem;margin:.4em 0}
 p{font-size:1.4rem}
 a{font-weight:bold;text-decoration:none;color:#4466ff}
 a:visited{color:#5577ff}
 img{max-width:100%;height:auto}
+
+/* Mobile-Anpassungen für perfekte Responsivität */
+@media (max-width:600px){
+  h1{font-size:2.2rem}
+  h3{font-size:2rem}
+  p{font-size:1.1rem}
+}
 </style>
 </head>
 <body>
+<canvas id="starfield"></canvas>
+
+<div class="content-wrap">
 <header>
 <center>
 <h1><a href="/">ict.pages.dev</a></h1>
-</header>
 </center>
+</header>
 <main>
 <center>
 <img src="/AppDev.svg" width="200" alt="ict.pages.dev logo">
@@ -48,5 +78,105 @@ img{max-width:100%;height:auto}
 <p>© 2026 ict.pages.dev</p>
 </center>
 </footer>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+
+  let W = 0, H = 0, CX = 0, CY = 0;
+  let stars = [];
+  const MAX_DEPTH = 1; // 0 = Zentrum, 1 = Rand
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    W = window.innerWidth;
+    H = window.innerHeight;
+    CX = W / 2;
+    CY = H / 2;
+
+    canvas.width  = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    initStars();
+  }
+
+  function initStars() {
+    // Sternendichte an Bildschirmgröße anpassen (responsiv)
+    const density = Math.floor((W * H) / 4000);
+    const count = Math.min(Math.max(density, 200), 1200);
+    stars = Array.from({ length: count }, () => newStar(true));
+  }
+
+  function newStar(randomDepth) {
+    return {
+      angle: Math.random() * Math.PI * 2,
+      z: randomDepth ? Math.random() : 0,
+      // Geschwindigkeit: bewusst langsam
+      speed: 0.0008 + Math.random() * 0.0018,
+      brightness: 0.4 + Math.random() * 0.6
+    };
+  }
+
+  function animate() {
+    // Sanfter Trail-Effekt statt komplettem Clear
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    ctx.fillRect(0, 0, W, H);
+
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+      s.z += s.speed;
+
+      if (s.z >= MAX_DEPTH) {
+        stars[i] = newStar(false);
+        continue;
+      }
+
+      // Quadratisches Easing → sanfte Beschleunigung nach außen
+      const eased = s.z * s.z;
+      const dist = eased * Math.max(W, H) * 0.75;
+
+      const x = CX + Math.cos(s.angle) * dist;
+      const y = CY + Math.sin(s.angle) * dist;
+
+      const size = 0.4 + eased * 2.2;
+      const alpha = s.brightness * Math.min(1, eased * 1.5);
+
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // Reagiert auch auf Orientierungswechsel (Mobile)
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', resize);
+
+  resize();
+  // Bei "reduzierter Bewegung" nur ein statisches Bild zeichnen
+  if (prefersReduced) {
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
+    stars.forEach(s => {
+      const eased = s.z * s.z;
+      const dist = eased * Math.max(W, H) * 0.75;
+      const x = CX + Math.cos(s.angle) * dist;
+      const y = CY + Math.sin(s.angle) * dist;
+      ctx.beginPath();
+      ctx.arc(x, y, 0.4 + eased * 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.brightness})`;
+      ctx.fill();
+    });
+  } else {
+    animate();
+  }
+})();
+</script>
 </body>
 </html>
