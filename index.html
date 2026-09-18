@@ -31,6 +31,63 @@ img{max-width:100%;height:auto}
 </style>
 </head>
 <body>
+
+<body>
+
+<canvas id="c"></canvas>
+
+<!-- dein normaler Seiteninhalt -->
+<div class="content">
+    <h1>Meine Seite</h1>
+</div>
+
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}
+canvas{position:fixed;inset:0;z-index:-1}
+</style>
+
+<script>
+const c=document.getElementById("c"),x=c.getContext("2d"),N=300;
+let w,h,s=[];
+
+function resize(){
+  w=c.width=innerWidth; h=c.height=innerHeight;
+  s=Array.from({length:N},()=>({
+    a:Math.random()*Math.PI*2,
+    d:Math.random()*Math.max(w,h),
+    v:.15+Math.random()*.25
+  }));
+}
+
+function draw(){
+  x.fillStyle="rgba(0,0,0,.2)";
+  x.fillRect(0,0,w,h);
+
+  for(let p of s){
+    p.d+=p.v;
+    let X=w/2+Math.cos(p.a)*p.d;
+    let Y=h/2+Math.sin(p.a)*p.d;
+
+    x.fillStyle="white";
+    x.beginPath();
+    x.arc(X,Y,.5+p.d/500,0,7);
+    x.fill();
+
+    if(X<0||X>w||Y<0||Y>h){
+      p.a=Math.random()*7;
+      p.d=0;
+    }
+  }
+  requestAnimationFrame(draw);
+}
+
+resize();
+draw();
+onresize=resize;
+</script>
+
+</body>
+  
 <header>
 <center>
 <h1><a href="https://ict.pages.dev">ict.pages.dev</a></h1>
