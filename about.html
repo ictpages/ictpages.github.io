@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ict.pages.dev | About</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="ict.pages.dev | ICT | Information & Communications Technology">
+<meta name="description" content="ict.pages.dev | ICT | Information &amp; Communications Technology">
 <meta name="robots" content="index, follow">
 <meta name="author" content="ict.pages.dev">
 <link rel="canonical" href="https://ict.pages.dev/">
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="https://ict.pages.dev/favicon.ico">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="ict.pages.dev">
-<meta property="og:description" content="ICT | Information & Communications Technology">
+<meta property="og:description" content="ICT | Information &amp; Communications Technology">
 <meta property="og:url" content="https://ict.pages.dev/">
 <meta property="og:image" content="https://ict.pages.dev/ictpages-og.png">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ict.pages.dev">
-<meta name="twitter:description" content="ICT | Information & Communications Technology">
+<meta name="twitter:description" content="ICT | Information &amp; Communications Technology">
 <meta name="twitter:image" content="https://ict.pages.dev/ictpages-og.png">
 <style>
 * {
@@ -36,7 +36,8 @@ body {
   color: #fff;
   font-family: Arial, sans-serif;
   line-height: 1.2;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 #starfield {
   position: fixed;
@@ -49,36 +50,19 @@ body {
 }
 .content-wrap {
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  padding: 20px;
+  min-height: 100vh;
+  padding: 50px 24px 70px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  gap: clamp(6px, 1.2vh, 16px);
+  gap: 28px;
   text-align: center;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #6688ff #000;
-}
-.content-wrap::-webkit-scrollbar {
-  width: 6px;
-}
-.content-wrap::-webkit-scrollbar-track {
-  background: #000;
-}
-.content-wrap::-webkit-scrollbar-thumb {
-  background: #6688ff;
-  border-radius: 3px;
 }
 header,
 main,
 footer {
   position: relative;
   z-index: 1;
-  width: 100%;
 }
 h1,
 h2,
@@ -116,262 +100,186 @@ a {
   line-height: 1.1;
 }
 
-/* ---------- BRAND BLOCK: Logo + ICT direkt untereinander ---------- */
-.brand-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  line-height: 1;
-  margin: 0 auto 0.1em;   /* minimaler Abstand nach unten */
-}
-.brand-block .logo {
-  display: block;
-  margin: 0;
-  width: 240px;
-}
-.brand-block .ict-label {
-  margin: 0;
-  line-height: 1;
-}
-
-/* ---------- SERVICES ---------- */
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0.15em 0 0.2em;   /* vorher: 0.8em oben → jetzt 0.15em */
-  color: #fff;
-}
-.section-subtitle {
-  font-size: 1.15rem;
-  color: #aaa;
-  margin-bottom: 1.2em;
-  max-width: 700px;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2em 2em;
-  max-width: 980px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: left;
-}
-details.service-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(102, 136, 255, 0.35);
-  border-radius: 10px;
-  padding: 0.2em 1em;
-  transition: border-color 0.2s, background 0.2s;
-}
-details.service-card[open] {
-  background: rgba(102, 136, 255, 0.06);
-  border-color: #6688ff;
-}
-details.service-card summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 0.9em 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6em;
-  user-select: none;
-}
-details.service-card summary::-webkit-details-marker {
-  display: none;
-}
-details.service-card summary::after {
-  content: "+";
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: #6688ff;
-  line-height: 1;
-  flex-shrink: 0;
-}
-details.service-card[open] summary::after {
-  content: "–";
-}
-details.service-card summary:hover {
-  color: #6688ff;
-}
-.service-card ul {
-  list-style: none;
-  padding: 0 0 0.8em 0;
-  margin: 0;
-}
-.service-card li {
-  margin-bottom: 1em;
-  padding-left: 0;
-}
-.service-card li:last-child {
-  margin-bottom: 0.4em;
-}
-.service-card li strong {
-  display: block;
-  font-size: 1.05rem;
-  color: #fff;
-  margin-bottom: 0.15em;
-}
-.service-card li span {
-  display: block;
-  font-size: 0.95rem;
-  color: #bbb;
-  line-height: 1.45;
-}
-
 /* ============================================================
-   MOBILE – 1:1 wie gehabt (max-width: 760px)
+   MOBILE – exakt wie im Original (max-width: 600px)
    ============================================================ */
-@media (max-width: 760px) {
+@media (max-width: 600px) {
   h1,
   h2,
   .ict-label {
     font-size: 2.8rem;
   }
+
   p {
     font-size: 1.1rem;
   }
-  .logo,
-  .brand-block .logo {
+
+  .logo {
     width: 170px;
   }
-  .section-title {
-    font-size: 1.7rem;
-  }
-  .section-subtitle {
-    font-size: 1rem;
-  }
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 0.9em;
-  }
-  details.service-card summary {
-    font-size: 1.1rem;
-    padding: 0.75em 0;
-  }
-  .service-card li strong {
-    font-size: 0.98rem;
-  }
-  .service-card li span {
-    font-size: 0.88rem;
+
+  .content-wrap {
+    padding: 32px 16px 50px;
+    gap: 22px;
   }
 
-  h2 a {
-    font-size: 2.8rem;
-    display: inline-block;
-    line-height: 1.2;
-  }
-
-  .section-title {
-    font-size: 3rem;
-    margin: 0.15em 0 0.5em;   /* vorher: 1em oben → jetzt 0.15em */
-  }
-
-  details.service-card {
-    padding: 0.4em 1.2em;
-    border-radius: 14px;
-  }
-  details.service-card summary {
-    font-size: 1.4rem;
-    padding: 0.9em 0;
-    line-height: 1.2;
-    white-space: nowrap;
-    gap: 0.4em;
-  }
-  details.service-card summary::after {
-    font-size: 1.9rem;
-  }
-  .service-card li {
-    margin-bottom: 1.6em;
-  }
-  .service-card li strong {
-    font-size: 1.5rem;
-    line-height: 1.4;
-    margin-bottom: 0.3em;
-  }
-  .service-card li span {
+  .service-card summary {
+    padding: 18px 52px 18px 18px;
     font-size: 1.3rem;
-    line-height: 1.65;
+  }
+
+  .service-content {
+    padding: 0 18px 24px;
+  }
+
+  .service-item strong {
+    font-size: 1.2rem;
+  }
+
+  .service-item span {
+    font-size: 1.05rem;
+    line-height: 1.5;
   }
 }
 
-/* ============================================================
-   LAPTOP / DESKTOP – Mobile-Werte × ~1.0 (quasi identisch)
-   ============================================================ */
-@media (min-width: 761px) {
+
+
+.services-grid {
+  width: min(100%, 1000px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+}
+
+.service-card {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.55);
+  overflow: hidden;
+}
+
+.service-card summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 58px 20px 24px;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.25;
+  font-weight: 700;
+  text-align: center;
+}
+
+.service-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.service-card summary::after {
+  content: "+";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.service-card[open] summary::after {
+  content: "−";
+}
+
+.service-content {
+  padding: 0 28px 30px;
+}
+
+.service-item {
+  padding-top: 24px;
+}
+
+.service-item strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height: 1.3;
+  font-weight: 700;
+  text-align: center;
+}
+
+.service-item span {
+  display: block;
+  font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.service-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .content-wrap {
+    padding: 32px 16px 50px;
+    gap: 22px;
+  }
+
+  .service-card summary {
+    padding: 18px 52px 18px 18px;
+    font-size: 1.3rem;
+  }
+
+  .service-content {
+    padding: 0 18px 24px;
+  }
+
+  .service-item strong {
+    font-size: 1.2rem;
+  }
+
+  .service-item span {
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+}
+
+
+@media (min-width: 601px) {
   h1,
   h2,
   .ict-label {
-    font-size: 2.9rem;
+    font-size: clamp(1.8rem, 4.2vw, 2.6rem);
   }
+
   p {
-    font-size: 1.15rem;
-  }
-  .logo,
-  .brand-block .logo {
-    width: 175px;
-  }
-  .section-title {
-    font-size: 1.75rem;
-  }
-  .section-subtitle {
-    font-size: 1.02rem;
-  }
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.92em;
-  }
-  details.service-card summary {
-    font-size: 1.13rem;
-    padding: 0.77em 0;
-  }
-  .service-card li strong {
-    font-size: 1rem;
-  }
-  .service-card li span {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 1.3vw, 1.1rem);
   }
 
-  h2 a {
-    font-size: 2.9rem;
-    display: inline-block;
-    line-height: 1.2;
+  .logo {
+    width: clamp(140px, 18vh, 220px);
+    height: auto;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 600px) {
+  h1,
+  h2,
+  .ict-label {
+    font-size: clamp(2rem, 3vw, 2.8rem);
   }
 
-  .section-title {
-    font-size: 3.1rem;
-    margin: 0.15em 0 0.52em;   /* vorher: 1.03em oben → jetzt 0.15em */
+  h2 {
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
   }
 
-  details.service-card {
-    padding: 0.41em 1.24em;
-    border-radius: 14.5px;
+  p {
+    font-size: clamp(0.85rem, 1vw, 1.1rem);
   }
-  details.service-card summary {
-    font-size: 1.44rem;
-    padding: 0.93em 0;
-    line-height: 1.2;
-    white-space: nowrap;
-    gap: 0.41em;
-  }
-  details.service-card summary::after {
-    font-size: 1.96rem;
-  }
-  .service-card li {
-    margin-bottom: 1.65em;
-  }
-  .service-card li strong {
-    font-size: 1.55rem;
-    line-height: 1.4;
-    margin-bottom: 0.31em;
-  }
-  .service-card li span {
-    font-size: 1.34rem;
-    line-height: 1.65;
+
+  .logo {
+    width: clamp(180px, 24vh, 260px);
   }
 }
 
@@ -383,163 +291,153 @@ details.service-card summary:hover {
 </style>
 </head>
 <body>
-<canvas id="starfield" aria-hidden="true"></canvas>
+<canvas id="starfield" aria-hidden="true" width="1920" height="877"></canvas>
 <div class="content-wrap">
   <header>
     <h1>
-      <a href="/" aria-label="ict.pages.dev home">ict.pages.dev</a>
+      <a href="https://ict.pages.dev/" aria-label="ict.pages.dev home">ict.pages.dev</a>
     </h1>
   </header>
   <main>
-    <div class="brand-block">
-      <img
-        class="logo"
-        src="/AppDev.svg"
-        width="240"
-        height="240"
-        alt="ict.pages.dev"
-        fetchpriority="high"
-      >
-      <div class="ict-label">ICT</div>
-    </div>
+    <img class="logo" src="./about_files/AppDev.svg" width="240" height="240" alt="ict.pages.dev" fetchpriority="high">
+<div class="ict-label">ICT</div><br>
+<h2><a href="https://ict.pages.dev/about">About</a></h2><br>
 
-    <!-- SERVICES -->
-    <h3 class="section-title">About</h3>
+<!-- SERVICES -->
     <div class="services-grid">
       <details class="service-card">
         <summary>Idea &amp; Foundation</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>Corporate Identity</strong>
             <span>Consistent brand guidelines covering logo usage, colors, typography, and tone of voice.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Webdesign &amp; Custom Websites</strong>
             <span>Responsive, high-converting websites and bespoke web designs engineered for speed, mobile optimization, and accessibility.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Accessibility (WCAG compliance)</strong>
             <span>Alt text, readable fonts, keyboard navigation, and contrast checks, embedded into brand and design from day one.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Legal, Compliance &amp; Insurance</strong>
             <span>Privacy policy, terms of service, GDPR/CCPA readiness documents, and tailored business liability coverage to protect your operations.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
       <details class="service-card">
         <summary>Brand &amp; Content</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>Digital asset management (DAM)</strong>
             <span>Central library for all brand assets, including logos, photos, videos, animations, and brand files.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>SEO (Search Engine Optimization)</strong>
             <span>On-page, off-page, and technical SEO to improve organic search rankings and generate ongoing organic traffic.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Landing page &amp; funnel optimization</strong>
             <span>A/B testing and conversion rate optimization (CRO) for continuous lead generation and maximum ROI.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
       <details class="service-card">
         <summary>E-Commerce &amp; Digital Platforms</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>OnlineShops &amp; E-Commerce Systems</strong>
             <span>Scalable online stores, seamless shopping cart experience, payment gateway integrations, and multi-currency checkout solutions.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Delivery Sites &amp; Order Portals</strong>
             <span>On-demand ordering systems, real-time dispatch tracking, and localized customer delivery platforms.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Vendor &amp; Marketplace Platforms</strong>
             <span>Multi-vendor marketplaces, supplier portals, sub-merchant management, and automated commission distribution engines.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Email marketing automation</strong>
             <span>Segmentation, abandoned cart recovery flows, lead nurture sequences, and newsletter campaigns.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
 
       <details class="service-card">
         <summary>Marketing &amp; Outreach</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>SMO &amp; Online Reputation Management</strong>
             <span>Social media Optimization, content scheduling, hashtag strategy, engagement tactics, plus monitoring reviews on Google, Yelp, and other platforms, and managing feedback.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Influencer &amp; micro-creator partnerships</strong>
             <span>Manage outreach, contracts, campaign briefs, and track performance of creator collaborations.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Podcast or webinar production</strong>
             <span>Produce, edit, publish, and repurpose audio/video content into short viral clips for SEO and social media.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Ai Research &amp; Development</strong>
             <span>Exploring automation, predictive analytics, machine learning, and intelligent chatbots for FAQs and lead qualification.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
 
       <details class="service-card">
         <summary>Operations &amp; People</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>Customer Relationship Management (CRM)</strong>
             <span>Track leads, sales pipeline, client interactions, and automated follow-ups in one centralized tool.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Customer support &amp; ticketing system</strong>
             <span>Live chat, email ticket management, and a searchable self-service knowledge base for customer queries.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Project management</strong>
             <span>Task tracking, team collaboration, workflow management using tools like Asana, Trello, or Jira, plus Zoom, Slack, Teams, and calendar coordination for remote or hybrid teams.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>HR basics, Accounting &amp; Billing</strong>
             <span>Hiring, contracts, payroll, expense tracking, tax preparation, standard operating procedures (SOPs), and automated billing with Stripe or PayPal.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
 
       <details class="service-card">
         <summary>Tech &amp; Growth Infrastructure</summary>
-        <ul>
-          <li>
+        <div class="service-content">
+          <div class="service-item">
             <strong>Continuous Integration &amp; Deployment (CI/CD)</strong>
             <span>Automated code testing and deployment pipelines to reduce manual errors, boost uptime, and speed up releases.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Data analytics &amp; dashboards</strong>
             <span>Monitor crucial KPIs such as churn, LTV, CAC, and revenue metrics for data-driven executive decision making.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>IT support, cybersecurity &amp; backup</strong>
             <span>Antivirus, VPNs, password management, encrypted offsite backups, and business continuity plans.</span>
-          </li>
-          <li>
+          </div>
+          <div class="service-item">
             <strong>Inventory, Network &amp; Fulfillment Infra</strong>
             <span>Stock tracking, e-commerce inventory sync, and reliable network/Wi-Fi setup for office, retail, or warehouse locations.</span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </details>
 
     </div>
-    <center>
-      <h2 style="margin-top:1em;">
-      <a href="tel:+31684725830" aria-label="Call ict.pages.dev">CALL</a>
-      <span aria-hidden="true"> | </span>
-      <a href="mailto:appdevsinfo@gmail.com" aria-label="Email ict.pages.dev">MAIL</a>
-    </h2>
-      </center>
+<br>
+<h2>
+  <a href="tel:+31684725830" aria-label="Call ict.pages.dev">CALL</a>
+  <span aria-hidden="true"> | </span>
+  <a href="mailto:appdevsinfo@gmail.com" aria-label="Email ict.pages.dev">MAIL</a>
+</h2>
   </main>
   <footer>
     <p>© 2026 ict.pages.dev</p>
@@ -648,20 +546,15 @@ details.service-card summary:hover {
   if (!reducedMotion) {
     animate();
   }
-})();
-
-// Accordion: nur ein Service gleichzeitig geöffnet
-document.querySelectorAll('details.service-card').forEach((detail) => {
-  detail.addEventListener('toggle', () => {
-    if (detail.open) {
-      document.querySelectorAll('details.service-card').forEach((other) => {
-        if (other !== detail) {
-          other.open = false;
-        }
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('toggle', () => {
+      if (!card.open) return;
+      document.querySelectorAll('.service-card').forEach(other => {
+        if (other !== card) other.open = false;
       });
-    }
+    });
   });
-});
+
+})();
 </script>
-</body>
-</html>
+</body></html>
