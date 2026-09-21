@@ -19,6 +19,8 @@ body{background:#000;color:#fff;font:1.4rem/1.2 Arial,sans-serif;overflow-x:hidd
 h1,h2,p{margin:0}
 h1,h2{font-weight:700;line-height:1.1}
 a{color:#6688ff;font-weight:700;text-decoration:none}
+/* FIX: Zwingt alle Links in Überschriften, exakt die h2-Größe zu erben */
+h2 a{font-size:inherit;font-weight:inherit}
 
 #starfield{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:-1;pointer-events:none}
 
@@ -43,16 +45,12 @@ button[type="submit"]{background:#6688ff;color:#000;border:none;padding:12px;fon
 button[type="submit"]:hover{background:#88a5ff}
 
 footer{margin-top:auto;padding-bottom:10px}
-footer h2{font-size:1.4rem;margin-bottom:8px}
-footer p{font-size:1.1rem;margin-bottom:8px}
 
 @media(max-width:600px){
 h1,h2{font-size:2.8rem}
 body{font-size:1.1rem}
 .contact-content h2{font-size:1.3rem}
 .contact-content{font-size:1rem}
-footer h2{font-size:1.3rem}
-footer p{font-size:1rem}
 }
 @media(min-width:601px){
 h1,h2{font-size:clamp(1.8rem,4.2vw,2.6rem)}
@@ -78,7 +76,7 @@ body{font-size:clamp(.85rem,1vw,1.1rem)}
 <h2>Contact</h2>
 <p>Write an E-Mail via the form below:</p>
 
-<form action="https://api.web3forms.com/submit" method="POST">
+<form action="https://web3forms.com" method="POST">
   <input type="hidden" name="access_key" value="68983f16-835a-46b7-ba07-37cd3d60a9b8">
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email Address" required>
