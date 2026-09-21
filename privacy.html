@@ -14,7 +14,7 @@
 <style>
 *{box-sizing:border-box}
 html,body{width:100%;height:100%;margin:0}
-body{background:#000;color:#fff;font:1.4rem/1.2 Arial,sans-serif;overflow:hidden}
+body{background:#000;color:#fff;font:1.4rem/1.2 Arial,sans-serif;overflow-x:hidden;overflow-y:auto}
 
 h1,h2,p{margin:0}
 h1,h2{font-weight:700;line-height:1.1}
@@ -22,32 +22,34 @@ a{color:#6688ff;font-weight:700;text-decoration:none}
 
 #starfield{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:-1;pointer-events:none}
 
-.content-wrap{width:100%;height:100vh;height:100dvh;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(6px,1.2vh,16px);text-align:center}
-header,main,footer{position:relative;z-index:1}
+.content-wrap{width:100%;min-height:100vh;min-height:100dvh;padding:20px 20px 10px 20px;display:flex;flex-direction:column;align-items:center;text-align:center}
+header,main,footer{position:relative;z-index:1;width:100%;max-width:650px}
 
-/* Scrollbarer Textbereich exakt im Layout-Fluss */
-.policy-text{max-width:650px;max-height:40vh;overflow-y:auto;text-align:left;padding-right:10px;margin:10px 0;font-size:1.1rem;line-height:1.4}
-.policy-text::-webkit-scrollbar{width:6px}
-.policy-text::-webkit-scrollbar-track{background:rgba(0,0,0,0.1)}
-.policy-text::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.2);border-radius:3px}
-.policy-text h2{color:#6688ff;font-size:1.3rem;margin:15px 0 5px 0}
-.policy-text p{margin-bottom:10px}
+header{margin-top:0px;padding-top:0px}
+.header-link{display:inline-block;margin-top:0px}
+
+main{flex:1;display:flex;flex-direction:column;align-items:center;gap:24px;margin:24px 0}
+
+.policy-content{text-align:left;font-size:1.1rem;line-height:1.4;width:100%}
+.policy-content h2{color:#6688ff;font-size:1.4rem;margin:24px 0 8px 0;text-align:left}
+.policy-content p{margin-bottom:12px}
+
+footer{margin-top:auto;padding-bottom:0px}
 
 @media(max-width:600px){
 h1,h2{font-size:2.8rem}
 body{font-size:1.1rem}
-.policy-text{max-height:35vh;font-size:1rem}
+.policy-content h2{font-size:1.3rem}
+.policy-content{font-size:1rem}
 }
 @media(min-width:601px){
 h1,h2{font-size:clamp(1.8rem,4.2vw,2.6rem)}
 body{font-size:clamp(.85rem,1.3vw,1.1rem)}
-.content-wrap{gap:clamp(6px,1.4vh,16px)}
 }
 @media(min-width:1024px) and (min-height:600px){
 h1{font-size:clamp(2rem,3vw,2.8rem)}
 h2{font-size:clamp(1.4rem,2.2vw,2rem)}
 body{font-size:clamp(.85rem,1vw,1.1rem)}
-.policy-text{max-height:50vh}
 }
 @media(prefers-reduced-motion:reduce){#starfield{display:none}}
 </style>
@@ -56,14 +58,12 @@ body{font-size:clamp(.85rem,1vw,1.1rem)}
 <body>
 <canvas id="starfield" aria-hidden="true"></canvas>
 <div class="content-wrap">
-<header>
-<h1><a href="/" aria-label="ict.pages.dev home">ict.pages.dev</a></h1>
+<header style="margin-top:calc(20px - 20px); padding-top:20px;">
+<h1><a href="/" class="header-link" aria-label="ict.pages.dev home">ict.pages.dev</a></h1>
 </header>
 <main>
-<div class="policy-text">
+<div class="policy-content">
 <h2>Privacy Policy</h2>
-<p>We take your data privacy seriously. This policy explains data processing for https://pages.dev.</p>
-
 <h2>No Cookies and Tracking</h2>
 <p>This website does not use cookies, local storage tracking, or any analytics tools. We do not track your behavior and do not require user consent.</p>
 
@@ -83,7 +83,9 @@ Email: ict.pages.dev@gmail.com</p>
 </div>
 <h2><a href="tel:+31684725830" aria-label="Call ict.pages.dev">CALL</a><span aria-hidden="true"> | </span><a href="mailto:ict.pages.dev@gmail.com" aria-label="Email ict.pages.dev">MAIL</a></h2>
 </main>
-<footer><p>© 2026 ict.pages.dev</p></footer>
+<footer style="padding-bottom:10px; margin-bottom:0px;">
+<p>© 2026 ict.pages.dev</p>
+</footer>
 </div>
 
 <script>
